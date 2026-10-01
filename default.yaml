@@ -100,7 +100,7 @@ sniffer:
     QUIC:
       ports: [443, 8443]
   skip-domain:
-    - 'MJMexom*'
+    - ‘+.mjmexom.com’
     - 'dlg.io.mi.com'
     - '+.apple.com'
     - '+.apple-cloudkit.com'
