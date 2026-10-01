@@ -61,14 +61,14 @@ dns:
     - '*.arpa'
     - 'time.*.com'
     - 'ntp.*.com'
-    - '+.market.xiaomi.com'
-    - '+.miwifi.com'
+    - '*.market.xiaomi.com'
+    - '*.miwifi.com'
     - 'localhost.ptlogin2.qq.com'
     - '*.msftncsi.com'
     - 'www.msftconnecttest.com'
-    - '+.qq.com'
-    - '+.battle.net'
-    - '+.steamcontent.com'
+    - '*.qq.com'
+    - '*.battle.net'
+    - '*.steamcontent.com'
   fallback-filter:
     geoip: true
     geoip-code: CN
@@ -76,11 +76,11 @@ dns:
       - 240.0.0.0/4
       - 0.0.0.0/32
     domain:
-      - '+.google.com'
-      - '+.facebook.com'
-      - '+.youtube.com'
-      - '+.twitter.com'
-      - '+.github.com'
+      - '*.google.com'
+      - '*.facebook.com'
+      - '*.youtube.com'
+      - '*.twitter.com'
+      - '*.github.com'
 ntp:
   enable: true
   write-to-system: false
@@ -100,12 +100,12 @@ sniffer:
     QUIC:
       ports: [443, 8443]
   skip-domain:
-    - ‘+.mjmexom.com’
+    - ‘*.mjmexom.com’
     - 'dlg.io.mi.com'
-    - '+.apple.com'
-    - '+.apple-cloudkit.com'
-    - '+.push.apple.com'
-    - '+.qq.com'
+    - '*.apple.com'
+    - '*.apple-cloudkit.com'
+    - '*.push.apple.com'
+    - '*.qq.com'
     - '*.steamcontent.com'
 tun:
   enable: true
