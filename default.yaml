@@ -242,9 +242,9 @@ proxy-groups:
   - name: 故障转移
     type: fallback
     proxies:
-      - 日本节点
       - 新加坡节点
       - 香港节点
+      - 日本节点
       - 美国节点
       - 其他备用
     url: 'http://www.youtube.com/generate_204'
@@ -443,6 +443,17 @@ proxy-groups:
       - 日本节点
       - 新加坡节点
       - 美国节点
+  - name: GLOBAL
+    type: select
+    proxies:
+      - 主代理
+      - 故障转移
+      - 香港节点
+      - 日本节点
+      - 新加坡节点
+      - 美国节点
+      - 其他备用
+      - DIRECT
 rule-providers:
   facebook:
     type: http
