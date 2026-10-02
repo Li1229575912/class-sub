@@ -56,6 +56,7 @@ dns:
       - https://1.1.1.1/dns-query
       - https://dns.google/dns-query
   fake-ip-filter:
+    - '211.136.25.211'
     - '*.lan'
     - '*.local'
     - '*.arpa'
@@ -100,6 +101,7 @@ sniffer:
     QUIC:
       ports: [443, 8443]
   skip-domain:
+    - '211.136.25.211'
     - 'mjmexom.com'
     - 'dlg.io.mi.com'
     - 'apple.com'
@@ -672,6 +674,8 @@ rule-providers:
     proxy: DIRECT
     interval: 86400
 rules:
+  - 'IP-CIDR,211.136.25.211/32,DIRECT,no-resolve'
+  - 'DST-PORT,4080,DIRECT'
   - PROCESS-NAME,nikki,DIRECT
   - PROCESS-NAME,Mihomo,DIRECT
   - PROCESS-NAME,clash,DIRECT
