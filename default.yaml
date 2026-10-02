@@ -120,6 +120,36 @@ tun:
     - 'any:53'
   auto-redirect: false
 proxies:
+  - name: "jp-udp-fuckip"
+    type: hysteria2
+    server: 154.36.187.249
+    port: 41998
+    password: "a9d5bc7c-51a9-4ccf-bdc8-b755f22761fd"
+    skip-cert-verify: true
+    alpn:
+      - h3
+  - name: "jp-tcp-fuckip"
+    type: vless
+    server: 154.36.187.249
+    port: 41997
+    uuid: "5de7c4f5-05cf-48dd-b737-27021107a6a9"
+    flow: xtls-rprx-vision
+    tls: true
+    servername: www.paypal.com
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: p-bfKkSBrG4jaTJVIlSJzDDu1-PrAGfTdAbUGBbGhiY
+  - name: "jp-tcp-fuckip2"
+    type: vless
+    server: 45.192.199.151
+    port: 41997
+    uuid: "983a50ed-fafc-4f12-a584-655b3a499ff1"
+    flow: xtls-rprx-vision
+    tls: true
+    servername: dash.cloudflare.com
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: WFlUiowOsszpN1vtUpty66g71BrP4b8Im29OdTpG8C0
   - name: hysteria2-57707
     type: hysteria2
     server: www.lightbook.cn
@@ -150,16 +180,19 @@ proxies:
     password: PY1kLRStaR
     sni: sub.lightbook.cn
     skip-cert-verify: true
-  - name: SG-UDP-SC
-    type: hysteria2
-    server: sgv6.lightbook.cn
-    port: 43595
-    password: 79511ea3-e915-4020-ad6e-1b2f66411193
+  - name: SG-TCP-SCV4
+    type: vless
+    server: 195.172.139.22
+    port: 41997
+    uuid: 331ff677-f404-44a3-8034-0dcdbcf5009c
+    flow: xtls-rprx-vision
     tls: true
-    skip-cert-verify: true
-    alpn:
-      - h3
-  - name: SG-TCP-SC
+    servername: www.cloudflare.com
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: kSzxEsckqnBYc2cCiavhz7t-fqQ57Fq0WY3FiVxtPko
+      short-id: ""
+  - name: SG-TCP-SCV6
     type: vless
     server: 2a13:edc0:1:1b::a
     port: 41997
@@ -173,7 +206,7 @@ proxies:
       short-id: ""
   - name: jp-cftun
     type: vless
-    server: cfcmv6.012889.xyz
+    server: cfcm.012889.xyz
     port: 443
     uuid: 6febda08-44b2-4648-b870-9f67b38dd6c0
     tls: true
@@ -185,7 +218,7 @@ proxies:
         Host: v1.lightbook.cn
   - name: us-cftun
     type: vless
-    server: cfcmv6.012889.xyz
+    server: cfcm.012889.xyz
     port: 443
     uuid: 6febda08-44b2-4648-b870-9f67b38dd6c0
     tls: true
@@ -195,60 +228,6 @@ proxies:
       path: /qwer
       headers:
         Host: v2.lightbook.cn
-  - name: "JP-CF电信原生-01"
-    type: vless
-    server: "172.64.229.48"
-    port: 443
-    uuid: 79299f8d-51af-48f6-bd4e-0abb260a58a4
-    udp: true
-    tls: true
-    client-fingerprint: "chrome"
-    servername: "newc2.012889.xyz"
-    skip-cert-verify: false
-    network: ws
-    ws-opts:
-      path: "/?ed=2048"
-      headers:
-        Host: "newc2.012889.xyz"
-    ech-opts:
-      enable: true
-      query-server-name: "cloudflare-ech.com"
-  - name: "HK-CF移动原生-01"
-    type: vless
-    server: "172.64.153.105"
-    port: 443
-    uuid: 79299f8d-51af-48f6-bd4e-0abb260a58a4
-    udp: true
-    tls: true
-    client-fingerprint: "chrome"
-    servername: "newc2.012889.xyz"
-    skip-cert-verify: false
-    network: ws
-    ws-opts:
-      path: "/?ed=2048"
-      headers:
-        Host: "newc2.012889.xyz"
-    ech-opts:
-      enable: true
-      query-server-name: "cloudflare-ech.com"
-  - name: "IPv6优选-01"
-    type: vless
-    server: "2606:4700:9a62::4706:6255"
-    port: 443
-    uuid: 79299f8d-51af-48f6-bd4e-0abb260a58a4
-    udp: true
-    tls: true
-    client-fingerprint: "chrome"
-    servername: "newc2.012889.xyz"
-    skip-cert-verify: false
-    network: ws
-    ws-opts:
-      path: "/?ed=2048"
-      headers:
-        Host: "newc2.012889.xyz"
-    ech-opts:
-      enable: true
-      query-server-name: "cloudflare-ech.com"
 proxy-groups:
   - name: 主代理
     type: select
@@ -263,9 +242,9 @@ proxy-groups:
   - name: 故障转移
     type: fallback
     proxies:
-      - 香港节点
       - 日本节点
       - 新加坡节点
+      - 香港节点
       - 美国节点
       - 其他备用
     url: 'http://www.youtube.com/generate_204'
@@ -276,24 +255,24 @@ proxy-groups:
       - hysteria2-57707
       - hysteria2-safety
       - vless-8080
-      - "HK-CF移动原生-01"
-      - "IPv6优选-01"
     url: 'http://www.youtube.com/generate_204'
     interval: 180
     tolerance: 25
   - name: 日本节点
     type: url-test
     proxies:
+      - jp-udp-fuckip
+      - jp-tcp-fuckip
+      - jp-tcp-fuckip2
       - jp-cftun
-      - "JP-CF电信原生-01"
     url: 'http://www.youtube.com/generate_204'
     interval: 180
     tolerance: 25
   - name: 新加坡节点
     type: url-test
     proxies:
-      - SG-TCP-SC
-      - SG-UDP-SC
+      - SG-TCP-SCV6
+      - SG-TCP-SCV4
     url: 'http://www.youtube.com/generate_204'
     interval: 180
     tolerance: 25
