@@ -122,6 +122,25 @@ tun:
     - 'any:53'
   auto-redirect: false
 proxies:
+  - name: "tw-udp-fuckip"
+    type: hysteria2
+    server: 202.160.76.247
+    port: 41998
+    password: "d3cdf218-843d-4425-a173-73d400ec3770"
+    skip-cert-verify: true
+    alpn:
+      - h3
+  - name: "tw-tcp-fuckip"
+    type: vless
+    server: 202.160.76.247
+    port: 35445
+    uuid: "496b176a-6f3d-4a06-9bf7-3cbb06c44bab"
+    flow: xtls-rprx-vision
+    tls: true
+    servername: aws.amazon.com
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: Yp_K4OCVmllI58WDt-GNpdoccifyI1um-RAdep2tkGA
   - name: "jp-udp-fuckip"
     type: hysteria2
     server: 154.36.187.249
@@ -311,6 +330,8 @@ proxy-groups:
   - name: 日本节点
     type: url-test
     proxies:
+      - tw-udp-fuckip
+      - tw-tcp-fuckip
       - jp-udp-fuckip
       - jp-tcp-fuckip
       - jp-tcp-fuckip2
