@@ -206,9 +206,56 @@ proxies:
     reality-opts:
       public-key: kSzxEsckqnBYc2cCiavhz7t-fqQ57Fq0WY3FiVxtPko
       short-id: ""
+  - name: "sg-tg购买"
+    type: vless
+    server: "2a0a:d687:f007::15d"
+    port: 58165
+    uuid: "c51f46b8-7304-43ac-b267-1c4469a62315"
+    flow: xtls-rprx-vision
+    tls: true
+    servername: sgdw.heavenroad.org
+    client-fingerprint: chrome
+    skip-cert-verify: false
+    alpn:
+      - h2
+      - http/1.1
+  - name: "sg-tcp-fuckip仅限移动v6"
+    type: vless
+    server: "2406:ef80:2:5c32:e777:7aa0:b8c6:6d90"
+    port: 42101
+    uuid: "7a84ea44-c47e-4d2a-9fd7-3db6c639447c"
+    flow: xtls-rprx-vision
+    tls: true
+    servername: www.amazon.com
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: g6CpxJhRYqaw2NOnxiP9LEWTGsZ4xteBXEO2Z7IyE0M
+  - name: "sg-tcp-fuckip仅限移动"
+    type: vless
+    server: 103.167.150.209
+    port: 42101
+    uuid: "7a84ea44-c47e-4d2a-9fd7-3db6c639447c"
+    flow: xtls-rprx-vision
+    tls: true
+    servername: www.amazon.com
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: g6CpxJhRYqaw2NOnxiP9LEWTGsZ4xteBXEO2Z7IyE0M
   - name: jp-cftun
     type: vless
     server: cfcm.012889.xyz
+    port: 443
+    uuid: 6febda08-44b2-4648-b870-9f67b38dd6c0
+    tls: true
+    servername: v1.lightbook.cn
+    network: ws
+    ws-opts:
+      path: /qwer
+      headers:
+        Host: v1.lightbook.cn
+  - name: jp-cftun-电信
+    type: vless
+    server: cfct.012889.xyz
     port: 443
     uuid: 6febda08-44b2-4648-b870-9f67b38dd6c0
     tls: true
@@ -251,6 +298,7 @@ proxy-groups:
       - 其他备用
     url: 'http://www.youtube.com/generate_204'
     interval: 180
+    timeout: 1500
   - name: 香港节点
     type: url-test
     proxies:
@@ -267,6 +315,7 @@ proxy-groups:
       - jp-tcp-fuckip
       - jp-tcp-fuckip2
       - jp-cftun
+      - jp-cftun-电信
     url: 'http://www.youtube.com/generate_204'
     interval: 180
     tolerance: 25
@@ -275,6 +324,9 @@ proxy-groups:
     proxies:
       - SG-TCP-SCV6
       - SG-TCP-SCV4
+      - sg-tg购买
+      - sg-tcp-fuckip仅限移动v6
+      - sg-tcp-fuckip仅限移动
     url: 'http://www.youtube.com/generate_204'
     interval: 180
     tolerance: 25
