@@ -324,9 +324,6 @@ proxy-groups:
     proxies:
       - SG-TCP-SCV6
       - SG-TCP-SCV4
-      - sg-tg购买
-      - sg-tcp-fuckip仅限移动v6
-      - sg-tcp-fuckip仅限移动
     url: 'http://www.youtube.com/generate_204'
     interval: 180
     tolerance: 25
@@ -341,6 +338,9 @@ proxy-groups:
     type: url-test
     proxies:
       - DIRECT
+      - sg-tg购买
+      - sg-tcp-fuckip仅限移动v6
+      - sg-tcp-fuckip仅限移动
     url: 'http://www.youtube.com/generate_204'
     interval: 180
     tolerance: 25
