@@ -365,6 +365,15 @@ proxy-groups:
     url: 'http://www.youtube.com/generate_204'
     interval: 180
     tolerance: 25
+  - name: 在线视频
+    type: fallback
+    proxies:
+      - 香港节点
+      - 日本节点
+      - 主代理
+    url: 'http://www.youtube.com/generate_204'
+    interval: 180
+    timeout: 2500
   - name: Bahamut
     type: select
     proxies:
@@ -749,6 +758,7 @@ rule-providers:
 rules:
   - 'IP-CIDR,211.136.25.211/32,DIRECT,no-resolve'
   - 'DST-PORT,4080,DIRECT'
+  - 'DOMAIN-SUFFIX,chophim.app,在线视频'
   - PROCESS-NAME,nikki,DIRECT
   - PROCESS-NAME,Mihomo,DIRECT
   - PROCESS-NAME,clash,DIRECT
