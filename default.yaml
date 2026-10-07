@@ -375,14 +375,13 @@ proxy-groups:
     interval: 180
     tolerance: 25
   - name: UDP代理专用
-    type: url-test
+    type: fallback
     proxies:
       - sg-udp-sky
       - tw-udp-fuckip
       - jp-udp-fuckip
     url: "http://www.gstatic.com/generate_204"
     interval: 300
-    tolerance: 50
   - name: 在线视频
     type: fallback
     proxies:
