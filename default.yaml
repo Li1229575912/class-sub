@@ -759,6 +759,8 @@ rules:
   - 'IP-CIDR,211.136.25.211/32,DIRECT,no-resolve'
   - 'DST-PORT,4080,DIRECT'
   - 'DOMAIN-SUFFIX,chophim.app,在线视频'
+  - 'DOMAIN-SUFFIX,phim1280.tv,在线视频'
+  - 'DOMAIN-SUFFIX,kvp726.com,在线视频'
   - PROCESS-NAME,nikki,DIRECT
   - PROCESS-NAME,Mihomo,DIRECT
   - PROCESS-NAME,clash,DIRECT
