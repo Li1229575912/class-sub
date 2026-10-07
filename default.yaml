@@ -122,6 +122,15 @@ tun:
     - 'any:53'
   auto-redirect: false
 proxies:
+  - name: "sg-udp-sky"
+    type: hysteria2
+    server: 195.172.139.22
+    port: 42000
+    password: "dd8c0319-9b8f-4daf-88f9-f535c1094681"
+    alpn:
+      - h3
+    skip-cert-verify: true
+    pinned-sha256: "6EB7493F587C4EEDA6C9367998BCEF2DA3A627075C15B454B66A9A2E8DB466F1"
   - name: "tw-udp-fuckip"
     type: hysteria2
     server: 202.160.76.247
@@ -365,6 +374,15 @@ proxy-groups:
     url: 'http://www.youtube.com/generate_204'
     interval: 180
     tolerance: 25
+  - name: UDP代理专用
+    type: url-test
+    proxies:
+      - sg-udp-sky
+      - tw-udp-fuckip
+      - jp-udp-fuckip
+    url: "http://www.gstatic.com/generate_204"
+    interval: 300
+    tolerance: 50
   - name: 在线视频
     type: fallback
     proxies:
@@ -762,15 +780,20 @@ rules:
   - 'DOMAIN-SUFFIX,phim1280.tv,在线视频'
   - 'DOMAIN-SUFFIX,kvp726.com,在线视频'
   - 'DOMAIN-KEYWORD,kkphimplayer,在线视频'
-  - PROCESS-NAME,nikki,DIRECT
-  - PROCESS-NAME,Mihomo,DIRECT
-  - PROCESS-NAME,clash,DIRECT
-  - DOMAIN-SUFFIX,lightbook.cn,DIRECT
-  - DOMAIN-KEYWORD,4kvm,DIRECT
-  - DOMAIN-SUFFIX,miwifi.com,DIRECT
-  - DOMAIN-SUFFIX,fengkongcloud.com,DIRECT
-  - DOMAIN-KEYWORD,xhscdn,DIRECT
-  - DOMAIN-KEYWORD,xiaohongshu,DIRECT
+  - 'DOMAIN-KEYWORD,googlevideo,UDP代理专用'
+  - 'DOMAIN-KEYWORD,googleusercontent,UDP代理专用'
+  - 'DOMAIN-SUFFIX,c.drive.google.com,UDP代理专用'
+  - 'DOMAIN-KEYWORD,gvt1,UDP代理专用'
+  - 'DOMAIN-KEYWORD,gvt2,UDP代理专用'
+  - 'PROCESS-NAME,nikki,DIRECT'
+  - 'PROCESS-NAME,Mihomo,DIRECT'
+  - 'PROCESS-NAME,clash,DIRECT'
+  - 'DOMAIN-SUFFIX,lightbook.cn,DIRECT'
+  - 'DOMAIN-KEYWORD,4kvm,DIRECT'
+  - 'DOMAIN-SUFFIX,miwifi.com,DIRECT'
+  - 'DOMAIN-SUFFIX,fengkongcloud.com,DIRECT'
+  - 'DOMAIN-KEYWORD,xhscdn,DIRECT'
+  - 'DOMAIN-KEYWORD,xiaohongshu,DIRECT'
   - 'AND,((DST-PORT,443),(NETWORK,UDP)),REJECT'
   - 'DOMAIN,ntp.aliyun.com,DIRECT'
   - 'DOMAIN,proxy.sakuraikaede.com,DIRECT'
