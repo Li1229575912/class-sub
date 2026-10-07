@@ -761,6 +761,7 @@ rules:
   - 'DOMAIN-SUFFIX,chophim.app,在线视频'
   - 'DOMAIN-SUFFIX,phim1280.tv,在线视频'
   - 'DOMAIN-SUFFIX,kvp726.com,在线视频'
+  - 'DOMAIN-KEYWORD,kkphimplayer,在线视频'
   - PROCESS-NAME,nikki,DIRECT
   - PROCESS-NAME,Mihomo,DIRECT
   - PROCESS-NAME,clash,DIRECT
