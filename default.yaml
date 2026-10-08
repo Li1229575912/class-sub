@@ -122,16 +122,25 @@ tun:
     - 'any:53'
   auto-redirect: false
 proxies:
-  - name: "sg-udp-sky"
+  - name: "jp-udp4-khanweb"
     type: hysteria2
-    server: 195.172.139.22
-    port: 42000
-    password: "dd8c0319-9b8f-4daf-88f9-f535c1094681"
-    alpn:
-      - h3
-    skip-cert-verify: true
-    pinned-sha256: "6EB7493F587C4EEDA6C9367998BCEF2DA3A627075C15B454B66A9A2E8DB466F1"
-  - name: "tw-udp-fuckip"
+    server: 103.179.45.197
+    port: 10202
+    password: "92696c01-4a3d-49cd-a302-96243ec87ae7"
+    skip-cert-verify: false
+    ca-sha256: "4013AAC29F48D9D68BDBED38DED3CCF85F047E03133C442CA1625E31D18A3D20"
+  - name: "jp-tcp4-khanweb"
+    type: vless
+    server: 103.179.45.197
+    port: 10201
+    uuid: "9d5568bb-87b1-4fd5-985d-3163b77a32c8"
+    flow: xtls-rprx-vision
+    tls: true
+    servername: aws.amazon.com
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: eioNoC2V3A8ATRP-dqB_FovnzTz_QHiWFwZC0ZcqPFk
+  - name: "tw-udp4-fuckip"
     type: hysteria2
     server: 202.160.76.247
     port: 41998
@@ -139,7 +148,7 @@ proxies:
     skip-cert-verify: true
     alpn:
       - h3
-  - name: "tw-tcp-fuckip"
+  - name: "tw-tcp4-fuckip"
     type: vless
     server: 202.160.76.247
     port: 35445
@@ -150,36 +159,6 @@ proxies:
     client-fingerprint: chrome
     reality-opts:
       public-key: Yp_K4OCVmllI58WDt-GNpdoccifyI1um-RAdep2tkGA
-  - name: "jp-udp-fuckip"
-    type: hysteria2
-    server: 154.36.187.249
-    port: 41998
-    password: "a9d5bc7c-51a9-4ccf-bdc8-b755f22761fd"
-    skip-cert-verify: true
-    alpn:
-      - h3
-  - name: "jp-tcp-fuckip"
-    type: vless
-    server: 154.36.187.249
-    port: 41997
-    uuid: "5de7c4f5-05cf-48dd-b737-27021107a6a9"
-    flow: xtls-rprx-vision
-    tls: true
-    servername: www.paypal.com
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: p-bfKkSBrG4jaTJVIlSJzDDu1-PrAGfTdAbUGBbGhiY
-  - name: "jp-tcp-fuckip2"
-    type: vless
-    server: 45.192.199.151
-    port: 41997
-    uuid: "983a50ed-fafc-4f12-a584-655b3a499ff1"
-    flow: xtls-rprx-vision
-    tls: true
-    servername: dash.cloudflare.com
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: WFlUiowOsszpN1vtUpty66g71BrP4b8Im29OdTpG8C0
   - name: hysteria2-57707
     type: hysteria2
     server: www.lightbook.cn
@@ -210,7 +189,7 @@ proxies:
     password: PY1kLRStaR
     sni: sub.lightbook.cn
     skip-cert-verify: true
-  - name: SG-TCP-SCV4
+  - name: SG-TCP4-SC
     type: vless
     server: 195.172.139.22
     port: 41997
@@ -222,7 +201,7 @@ proxies:
     reality-opts:
       public-key: kSzxEsckqnBYc2cCiavhz7t-fqQ57Fq0WY3FiVxtPko
       short-id: ""
-  - name: SG-TCP-SCV6
+  - name: SG-TCP6-SC
     type: vless
     server: 2a13:edc0:1:1b::a
     port: 41997
@@ -234,20 +213,25 @@ proxies:
     reality-opts:
       public-key: kSzxEsckqnBYc2cCiavhz7t-fqQ57Fq0WY3FiVxtPko
       short-id: ""
-  - name: "sg-tg购买"
-    type: vless
-    server: "2a0a:d687:f007::15d"
-    port: 58165
-    uuid: "c51f46b8-7304-43ac-b267-1c4469a62315"
-    flow: xtls-rprx-vision
-    tls: true
-    servername: sgdw.heavenroad.org
-    client-fingerprint: chrome
-    skip-cert-verify: false
+  - name: SG-UDP4-SC
+    type: hysteria2
+    server: 195.172.139.22
+    port: 42000
+    password: "dd8c0319-9b8f-4daf-88f9-f535c1094681"
     alpn:
-      - h2
-      - http/1.1
-  - name: "sg-tcp-fuckip仅限移动v6"
+      - h3
+    skip-cert-verify: false
+    ca-sha256: "6EB7493F587C4EEDA6C9367998BCEF2DA3A627075C15B454B66A9A2E8DB466F1"
+  - name: SG-UDP6-SC
+    type: hysteria2
+    server: 2a13:edc0:1:1b::a
+    port: 42000
+    password: "dd8c0319-9b8f-4daf-88f9-f535c1094681"
+    alpn:
+      - h3
+    skip-cert-verify: false
+    ca-sha256: "6EB7493F587C4EEDA6C9367998BCEF2DA3A627075C15B454B66A9A2E8DB466F1"
+  - name: "sg-tcp6-fuckip移动"
     type: vless
     server: "2406:ef80:2:5c32:e777:7aa0:b8c6:6d90"
     port: 42101
@@ -258,7 +242,7 @@ proxies:
     client-fingerprint: chrome
     reality-opts:
       public-key: g6CpxJhRYqaw2NOnxiP9LEWTGsZ4xteBXEO2Z7IyE0M
-  - name: "sg-tcp-fuckip仅限移动"
+  - name: "sg-tcp4-fuckip移动"
     type: vless
     server: 103.167.150.209
     port: 42101
@@ -315,13 +299,14 @@ proxy-groups:
       - 新加坡节点
       - 美国节点
       - 其他备用
+      - UDP代理专用
       - DIRECT
   - name: 故障转移
     type: fallback
     proxies:
       - 新加坡节点
-      - 香港节点
       - 日本节点
+      - 香港节点
       - 美国节点
       - 其他备用
     url: 'http://www.youtube.com/generate_204'
@@ -339,11 +324,10 @@ proxy-groups:
   - name: 日本节点
     type: url-test
     proxies:
-      - tw-udp-fuckip
-      - tw-tcp-fuckip
-      - jp-udp-fuckip
-      - jp-tcp-fuckip
-      - jp-tcp-fuckip2
+      - jp-udp4-khanweb
+      - jp-tcp4-khanweb
+      - tw-udp4-fuckip
+      - tw-tcp4-fuckip
       - jp-cftun
       - jp-cftun-电信
     url: 'http://www.youtube.com/generate_204'
@@ -352,8 +336,12 @@ proxy-groups:
   - name: 新加坡节点
     type: url-test
     proxies:
-      - SG-TCP-SCV6
-      - SG-TCP-SCV4
+      - SG-UDP6-SC
+      - SG-UDP4-SC
+      - SG-TCP4-SC
+      - SG-TCP6-SC
+      - sg-tcp6-fuckip移动
+      - sg-tcp4-fuckip移动
     url: 'http://www.youtube.com/generate_204'
     interval: 180
     tolerance: 25
@@ -368,18 +356,16 @@ proxy-groups:
     type: url-test
     proxies:
       - DIRECT
-      - sg-tg购买
-      - sg-tcp-fuckip仅限移动v6
-      - sg-tcp-fuckip仅限移动
     url: 'http://www.youtube.com/generate_204'
     interval: 180
     tolerance: 25
   - name: UDP代理专用
     type: fallback
     proxies:
-      - sg-udp-sky
-      - tw-udp-fuckip
-      - jp-udp-fuckip
+      - SG-UDP6-SC
+      - SG-UDP4-SC
+      - jp-udp4-khanweb
+      - tw-udp4-fuckip
     url: "http://www.gstatic.com/generate_204"
     interval: 300
   - name: 在线视频
