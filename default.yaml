@@ -128,7 +128,7 @@ proxies:
     port: 10202
     password: "92696c01-4a3d-49cd-a302-96243ec87ae7"
     skip-cert-verify: false
-    ca-sha256: "4013AAC29F48D9D68BDBED38DED3CCF85F047E03133C442CA1625E31D18A3D20"
+    pinned-sha256: "4013AAC29F48D9D68BDBED38DED3CCF85F047E03133C442CA1625E31D18A3D20"
   - name: "jp-tcp4-khanweb"
     type: vless
     server: 103.179.45.197
@@ -221,7 +221,7 @@ proxies:
     alpn:
       - h3
     skip-cert-verify: false
-    ca-sha256: "6EB7493F587C4EEDA6C9367998BCEF2DA3A627075C15B454B66A9A2E8DB466F1"
+    pinned-sha256: "6EB7493F587C4EEDA6C9367998BCEF2DA3A627075C15B454B66A9A2E8DB466F1"
   - name: SG-UDP6-SC
     type: hysteria2
     server: 2a13:edc0:1:1b::a
@@ -230,7 +230,7 @@ proxies:
     alpn:
       - h3
     skip-cert-verify: false
-    ca-sha256: "6EB7493F587C4EEDA6C9367998BCEF2DA3A627075C15B454B66A9A2E8DB466F1"
+    pinned-sha256: "6EB7493F587C4EEDA6C9367998BCEF2DA3A627075C15B454B66A9A2E8DB466F1"
   - name: "sg-tcp6-fuckip移动"
     type: vless
     server: "2406:ef80:2:5c32:e777:7aa0:b8c6:6d90"
