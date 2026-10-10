@@ -122,14 +122,86 @@ tun:
     - 'any:53'
   auto-redirect: false
 proxies:
-  - name: "jp-udp4-khanweb"
+  - name: "US-UDP6-FK"
+    type: hysteria2
+    server: "2602:faa8:205:1f1d::1"
+    port: 41998
+    password: "d90a7f30-6d8b-4c3b-bd4a-65de69fbd9d1"
+    skip-cert-verify: true
+    pinned-sha256: "E06BCD5B74A97839B13A92A41BEB899E2E60433D81E22E6E50945FA339378306"
+  - name: "US-TCP6-FK"
+    type: vless
+    server: "2602:faa8:205:1f1d::1"
+    port: 41997
+    uuid: "9ae16182-9aa7-49cb-a1fb-c7c85ea15e3b"
+    flow: xtls-rprx-vision
+    tls: true
+    servername: www.amazon.com
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: X_LYfm05s2HWLKdecBdd-XfoMwyR6mAntqRMBaURvSw
+  - name: "US-UDP4-FK"
+    type: hysteria2
+    server: 64.49.28.245
+    port: 41998
+    password: "d90a7f30-6d8b-4c3b-bd4a-65de69fbd9d1"
+    skip-cert-verify: true
+    pinned-sha256: "E06BCD5B74A97839B13A92A41BEB899E2E60433D81E22E6E50945FA339378306"
+  - name: "US-TCP4-FK"
+    type: vless
+    server: 64.49.28.245
+    port: 41997
+    uuid: "9ae16182-9aa7-49cb-a1fb-c7c85ea15e3b"
+    flow: xtls-rprx-vision
+    tls: true
+    servername: www.amazon.com
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: X_LYfm05s2HWLKdecBdd-XfoMwyR6mAntqRMBaURvSw
+  - name: "TW-UDP4-FK"
+    type: hysteria2
+    server: 202.160.76.247
+    port: 41998
+    password: "04fd039b-a576-4209-8bf8-04958fed4ec6"
+    skip-cert-verify: true
+    pinned-sha256: "8B08C401BC6BD818AF8019BA8292F5C2A092F4C2C8B768FDEB94840352C28450"
+  - name: "TW-TCP4-FK"
+    type: vless
+    server: 202.160.76.247
+    port: 41997
+    uuid: "9ae16182-9aa7-49cb-a1fb-c7c85ea15e3b"
+    flow: xtls-rprx-vision
+    tls: true
+    servername: www.amazon.com
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: aFISYkknPca_ce1hjYD4WOE74S3sA16qndUm9tvXjAk
+  - name: "SG-UDP6-FK"
+    type: hysteria2
+    server: "2406:da18:11ae:3600:367e:ca90:fdfa:dfd3"
+    port: 41998
+    password: "b5e57d76-5739-4656-83b5-badc636f30cd"
+    skip-cert-verify: true
+    pinned-sha256: "1CC24AC3162ECAAE2CAB6EA39046B46D9D80A3939794C2FA01FC03035D686219"
+  - name: "SG-TCP6-FK"
+    type: vless
+    server: "2406:da18:11ae:3600:367e:ca90:fdfa:dfd3"
+    port: 41997
+    uuid: "9ae16182-9aa7-49cb-a1fb-c7c85ea15e3b"
+    flow: xtls-rprx-vision
+    tls: true
+    servername: www.amazon.com
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: BzrCQZVkdS2-Kkzm9LzUypp5yYmtIN9UJZsrJJFl5x0
+  - name: "JP-UDP4-KHANWEB"
     type: hysteria2
     server: 103.179.45.197
     port: 10202
     password: "92696c01-4a3d-49cd-a302-96243ec87ae7"
     skip-cert-verify: true
     pinned-sha256: "4013AAC29F48D9D68BDBED38DED3CCF85F047E03133C442CA1625E31D18A3D20"
-  - name: "jp-tcp4-khanweb"
+  - name: "JP-TCP4-KHANWEB"
     type: vless
     server: 103.179.45.197
     port: 10201
@@ -140,25 +212,6 @@ proxies:
     client-fingerprint: chrome
     reality-opts:
       public-key: eioNoC2V3A8ATRP-dqB_FovnzTz_QHiWFwZC0ZcqPFk
-  - name: "tw-udp4-fuckip"
-    type: hysteria2
-    server: 202.160.76.247
-    port: 41998
-    password: "d3cdf218-843d-4425-a173-73d400ec3770"
-    skip-cert-verify: true
-    alpn:
-      - h3
-  - name: "tw-tcp4-fuckip"
-    type: vless
-    server: 202.160.76.247
-    port: 35445
-    uuid: "496b176a-6f3d-4a06-9bf7-3cbb06c44bab"
-    flow: xtls-rprx-vision
-    tls: true
-    servername: aws.amazon.com
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: Yp_K4OCVmllI58WDt-GNpdoccifyI1um-RAdep2tkGA
   - name: hysteria2-57707
     type: hysteria2
     server: www.lightbook.cn
@@ -231,20 +284,9 @@ proxies:
       - h3
     skip-cert-verify: true
     pinned-sha256: "6EB7493F587C4EEDA6C9367998BCEF2DA3A627075C15B454B66A9A2E8DB466F1"
-  - name: "sg-tcp6-fuckip移动"
+  - name: "SG-TCP6-FK2"
     type: vless
     server: "2406:ef80:2:5c32:e777:7aa0:b8c6:6d90"
-    port: 42101
-    uuid: "7a84ea44-c47e-4d2a-9fd7-3db6c639447c"
-    flow: xtls-rprx-vision
-    tls: true
-    servername: www.amazon.com
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: g6CpxJhRYqaw2NOnxiP9LEWTGsZ4xteBXEO2Z7IyE0M
-  - name: "sg-tcp4-fuckip移动"
-    type: vless
-    server: 103.167.150.209
     port: 42101
     uuid: "7a84ea44-c47e-4d2a-9fd7-3db6c639447c"
     flow: xtls-rprx-vision
@@ -304,10 +346,10 @@ proxy-groups:
   - name: 故障转移
     type: fallback
     proxies:
-      - 新加坡节点
       - 日本节点
-      - 香港节点
+      - 新加坡节点
       - 美国节点
+      - 香港节点
       - 其他备用
     url: 'http://www.youtube.com/generate_204'
     interval: 180
@@ -324,10 +366,10 @@ proxy-groups:
   - name: 日本节点
     type: url-test
     proxies:
-      - jp-udp4-khanweb
-      - jp-tcp4-khanweb
-      - tw-udp4-fuckip
-      - tw-tcp4-fuckip
+      - JP-UDP4-KHANWEB
+      - JP-TCP4-KHANWEB
+      - TW-UDP4-FK
+      - TW-TCP4-FK
       - jp-cftun
       - jp-cftun-电信
     url: 'http://www.youtube.com/generate_204'
@@ -340,14 +382,19 @@ proxy-groups:
       - SG-UDP4-SC
       - SG-TCP4-SC
       - SG-TCP6-SC
-      - sg-tcp6-fuckip移动
-      - sg-tcp4-fuckip移动
+      - SG-UDP6-FK
+      - SG-TCP6-FK
+      - SG-TCP6-FK2
     url: 'http://www.youtube.com/generate_204'
     interval: 180
     tolerance: 25
   - name: 美国节点
     type: url-test
     proxies:
+      - US-UDP6-FK
+      - US-TCP6-FK
+      - US-UDP4-FK
+      - US-TCP4-FK
       - us-cftun
     url: 'http://www.youtube.com/generate_204'
     interval: 180
@@ -364,8 +411,10 @@ proxy-groups:
     proxies:
       - SG-UDP6-SC
       - SG-UDP4-SC
-      - jp-udp4-khanweb
-      - tw-udp4-fuckip
+      - JP-UDP4-KHANWEB
+      - US-UDP6-FK
+      - US-UDP4-FK
+      - TW-UDP4-FK
     url: "http://www.gstatic.com/generate_204"
     interval: 300
   - name: 在线视频
@@ -773,6 +822,7 @@ rules:
   - 'PROCESS-NAME,nikki,DIRECT'
   - 'PROCESS-NAME,Mihomo,DIRECT'
   - 'PROCESS-NAME,clash,DIRECT'
+  - 'DOMAIN-SUFFIX,khanwebhost.com,DIRECT'
   - 'DOMAIN-SUFFIX,lightbook.cn,DIRECT'
   - 'DOMAIN-KEYWORD,4kvm,DIRECT'
   - 'DOMAIN-SUFFIX,miwifi.com,DIRECT'
