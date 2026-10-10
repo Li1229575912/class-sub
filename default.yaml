@@ -122,42 +122,6 @@ tun:
     - 'any:53'
   auto-redirect: false
 proxies:
-  - name: "US-UDP6-FK"
-    type: hysteria2
-    server: "2602:faa8:205:1f1d::1"
-    port: 41998
-    password: "d90a7f30-6d8b-4c3b-bd4a-65de69fbd9d1"
-    skip-cert-verify: true
-    pinned-sha256: "E06BCD5B74A97839B13A92A41BEB899E2E60433D81E22E6E50945FA339378306"
-  - name: "US-TCP6-FK"
-    type: vless
-    server: "2602:faa8:205:1f1d::1"
-    port: 41997
-    uuid: "9ae16182-9aa7-49cb-a1fb-c7c85ea15e3b"
-    flow: xtls-rprx-vision
-    tls: true
-    servername: www.amazon.com
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: X_LYfm05s2HWLKdecBdd-XfoMwyR6mAntqRMBaURvSw
-  - name: "US-UDP4-FK"
-    type: hysteria2
-    server: 64.49.28.245
-    port: 41998
-    password: "d90a7f30-6d8b-4c3b-bd4a-65de69fbd9d1"
-    skip-cert-verify: true
-    pinned-sha256: "E06BCD5B74A97839B13A92A41BEB899E2E60433D81E22E6E50945FA339378306"
-  - name: "US-TCP4-FK"
-    type: vless
-    server: 64.49.28.245
-    port: 41997
-    uuid: "9ae16182-9aa7-49cb-a1fb-c7c85ea15e3b"
-    flow: xtls-rprx-vision
-    tls: true
-    servername: www.amazon.com
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: X_LYfm05s2HWLKdecBdd-XfoMwyR6mAntqRMBaURvSw
   - name: "TW-UDP4-FK"
     type: hysteria2
     server: 202.160.76.247
@@ -212,6 +176,24 @@ proxies:
     client-fingerprint: chrome
     reality-opts:
       public-key: eioNoC2V3A8ATRP-dqB_FovnzTz_QHiWFwZC0ZcqPFk
+  - name: "US-TCP4-JOY"
+    type: vless
+    server: 199.102.217.192
+    port: 40471
+    uuid: "444a2dc5-4875-4e95-b26f-93a428f1059b"
+    flow: xtls-rprx-vision
+    tls: true
+    servername: www.paypal.com
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: PNtZq6ccsIsdUQlBW5w8CYlYwPlCBYsldIcM4PITHxA
+  - name: "US-UDP4-JOY"
+    type: hysteria2
+    server: 199.102.217.192
+    port: 40472
+    password: "aba17798-58dd-4c61-9a9f-333ddc641349"
+    skip-cert-verify: true
+    pinned-sha256: "AF6690289E65333F6F1FFB03ECFAAA360B9BB4C45EB01254E564517C64E78354"
   - name: hysteria2-57707
     type: hysteria2
     server: www.lightbook.cn
@@ -335,6 +317,7 @@ proxy-groups:
   - name: 主代理
     type: select
     proxies:
+      - 精品网
       - 故障转移
       - 香港节点
       - 日本节点
@@ -343,9 +326,23 @@ proxy-groups:
       - 其他备用
       - UDP代理专用
       - DIRECT
+  - name: "精品网"
+    type: url-test
+    proxies:
+      - "US-TCP4-JOY"
+      - "US-UDP4-JOY"
+      - JP-UDP4-KHANWEB
+      - JP-TCP4-KHANWEB
+      - SG-TCP6-SC
+      - SG-UDP6-SC
+    url: 'http://www.youtube.com/generate_204'
+    interval: 180
+    tolerance: 0
+    timeout: 500
   - name: 故障转移
     type: fallback
     proxies:
+      - 精品网
       - 日本节点
       - 新加坡节点
       - 美国节点
@@ -391,10 +388,8 @@ proxy-groups:
   - name: 美国节点
     type: url-test
     proxies:
-      - US-UDP6-FK
-      - US-TCP6-FK
-      - US-UDP4-FK
-      - US-TCP4-FK
+      - US-UDP4-JOY
+      - US-TCP4-JOY
       - us-cftun
     url: 'http://www.youtube.com/generate_204'
     interval: 180
@@ -412,8 +407,7 @@ proxy-groups:
       - SG-UDP6-SC
       - SG-UDP4-SC
       - JP-UDP4-KHANWEB
-      - US-UDP6-FK
-      - US-UDP4-FK
+      - US-UDP4-JOY
       - TW-UDP4-FK
     url: "http://www.gstatic.com/generate_204"
     interval: 300
