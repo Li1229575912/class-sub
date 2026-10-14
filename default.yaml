@@ -122,7 +122,6 @@ tun:
     - 'any:53'
   auto-redirect: false
 proxies:
-proxies:
   - name: "JP-TCP4-AWS"
     type: vless
     server: 18.183.142.63
