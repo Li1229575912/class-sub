@@ -129,9 +129,9 @@ proxies:
     password: a5ceb891-ea37-4ee3-a733-8cfb619e2e4f
     ports: 10203-10220
     hop-interval: 30
-    sni: www.amazon.com
+    pinned-sha256: FAC5F8800B3DC0555641338E8D40032AB08795E1195316C09DC587239B3BEDC6
     skip-cert-verify: false
-    fingerprint: chrome
+    client-fingerprint: chrome
   - name: "JP-TCP4-KHANWEB"
     type: vless
     server: 103.179.45.197
@@ -152,8 +152,9 @@ proxies:
     password: ea943fd8-ae79-4ceb-b6f8-c5fb0d4da3f1
     ports: 42000-50000
     hop-interval: 30
-    skip-cert-verify: true
-    fingerprint: chrome
+    pinned-sha256: 73B053FFB8368A39DD4FC4E6FAD3EB9D50A0B09106A67CE9FFCB5501EE7A7213
+    skip-cert-verify: false
+    client-fingerprint: chrome
   - name: "JP-TCP4-AWS"
     type: vless
     server: 18.183.142.63
