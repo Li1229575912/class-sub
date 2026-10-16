@@ -122,28 +122,57 @@ tun:
     - 'any:53'
   auto-redirect: false
 proxies:
-  - name: "JP-TCP4-AWS"
+  - name: "JP-TCP4-ORACLE"
     type: vless
-    server: 18.183.142.63
-    port: 41997
-    uuid: 216a392a-e9bc-4d85-8e02-1f4e3266fd98
+    server: 168.110.63.237
+    port: 14816
+    uuid: 3f9f9441-2fc6-4a4d-bc73-5324d16607b5
     network: tcp
-    tls: true
     udp: true
+    tls: true
     flow: xtls-rprx-vision
-    servername: www.amazon.com
-    reality-opts:
-      public-key: UB32UOuQx3lu3pwTbJ4G4HfybWuQurJn4aFu5NTe4BU
+    servername: dash.cloudflare.com
     client-fingerprint: chrome
-  - name: "JP-UDP4-AWS"
+    reality-opts:
+      public-key: n34FivzgzWFwMdH02PrvjVD43TfFNc_W095pZs7knVk
+  - name: "JP-UDP4-ORACLE"
     type: hysteria2
-    server: 18.183.142.63
+    server: 168.110.63.237
     port: 41998
-    password: ea943fd8-ae79-4ceb-b6f8-c5fb0d4da3f1
+    password: 62018bfa-e7cc-4272-bea7-a0412635275c
     skip-cert-verify: true
-    pinned-sha256: 73b053ffb8368a39dd4fc4e6fad3eb9d50a0b09106a67ce9ffcb5501ee7a7213
+    pinned-sha256: 6307285404EF430BA42A441AC24706C97C3CA1607D4A80D313CC19A509D592E5
     ports: 42000-50000
     hop-interval: 30
+  - name: "SG-TCP4-AWS"
+    type: vless
+    server: 13.229.204.126
+    port: 41997
+    uuid: 798f9870-ac3a-416b-8a62-422d9a36b3e0
+    network: tcp
+    udp: true
+    tls: true
+    flow: xtls-rprx-vision
+    servername: aws.amazon.com
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: h042RM2-LolvzszVsx_qPTHyHUdlfLGvHyHBkud66Fc
+  - name: "SG-UDP4-AWS"
+    type: hysteria2
+    server: 13.229.204.126
+    port: 41998
+    password: 20bbdbe2-1299-4dd9-bfe8-5677012d3205
+    skip-cert-verify: true
+    pinned-sha256: C9859C9A735D7FBC84767F593F81689CD78E4C81CB0474D5B7E75B998FC9BFF9
+    ports: 42000-50000
+    hop-interval: 30
+  - name: "US-UDP4-GCP"
+    type: hysteria2
+    server: 168.110.63.237
+    port: 31998
+    password: 3cb78393-b7dd-49fe-96b8-0d55a0757c36
+    skip-cert-verify: true
+    pinned-sha256: FB47D3EE558C0BC06B5E9691B0E1C7C2EDD37B8D039FEC53CCC5136FDE25EB58
   - name: "JP-TCP4-KHANWEB"
     type: vless
     server: 103.179.45.197
@@ -162,6 +191,8 @@ proxies:
     server: 103.179.45.197
     port: 10202
     password: a5ceb891-ea37-4ee3-a733-8cfb619e2e4f
+    up: 100 Mbps
+    down: 200 Mbps
     skip-cert-verify: true
     pinned-sha256: fac5f8800b3dc0555641338e8d40032ab08795e1195316c09dc587239b3bedc6
     ports: 10203-10220
@@ -202,24 +233,6 @@ proxies:
     client-fingerprint: chrome
     reality-opts:
       public-key: BzrCQZVkdS2-Kkzm9LzUypp5yYmtIN9UJZsrJJFl5x0
-  - name: "US-TCP4-JOY"
-    type: vless
-    server: 199.102.217.192
-    port: 40471
-    uuid: "444a2dc5-4875-4e95-b26f-93a428f1059b"
-    flow: xtls-rprx-vision
-    tls: true
-    servername: www.paypal.com
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: PNtZq6ccsIsdUQlBW5w8CYlYwPlCBYsldIcM4PITHxA
-  - name: "US-UDP4-JOY"
-    type: hysteria2
-    server: 199.102.217.192
-    port: 40472
-    password: "aba17798-58dd-4c61-9a9f-333ddc641349"
-    skip-cert-verify: true
-    pinned-sha256: "AF6690289E65333F6F1FFB03ECFAAA360B9BB4C45EB01254E564517C64E78354"
   - name: hysteria2-57707
     type: hysteria2
     server: www.lightbook.cn
@@ -353,10 +366,10 @@ proxy-groups:
   - name: 优选UDP优先代理
     type: fallback
     proxies:
-      - JP-UDP4-AWS
-      - JP-UDP4-KHANWEB
+      - JP-UDP4-ORACLE
+      - SG-UDP4-AWS
       - SG-UDP6-FK
-      - US-UDP4-JOY
+      - JP-UDP4-KHANWEB
       - 日本节点
       - 美国节点
       - 新加坡节点
@@ -379,8 +392,8 @@ proxy-groups:
   - name: 日本节点
     type: url-test
     proxies:
-      - JP-UDP4-AWS
-      - JP-TCP4-AWS
+      - JP-UDP4-ORACLE
+      - JP-TCP4-ORACLE
       - JP-UDP4-KHANWEB
     url: 'http://latency-test.skk.moe/endpoint'
     interval: 180
@@ -389,6 +402,8 @@ proxy-groups:
   - name: 新加坡节点
     type: url-test
     proxies:
+      - SG-UDP4-AWS
+      - SG-TCP4-AWS
       - SG-UDP6-FK
       - SG-TCP6-FK
       - SG-TCP6-FK2
@@ -399,8 +414,7 @@ proxy-groups:
   - name: 美国节点
     type: url-test
     proxies:
-      - US-UDP4-JOY
-      - US-TCP4-JOY
+      - US-UDP4-GCP
     url: 'http://latency-test.skk.moe/endpoint'
     interval: 180
     tolerance: 25
@@ -426,6 +440,8 @@ proxy-groups:
   - name: 在线视频
     type: fallback
     proxies:
+      - SG-UDP6-FK
+      - JP-UDP4-KHANWEB
       - 香港节点
       - 日本节点
       - 主代理
