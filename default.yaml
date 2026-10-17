@@ -366,10 +366,10 @@ proxy-groups:
   - name: 优选UDP优先代理
     type: fallback
     proxies:
+      - JP-UDP4-ORACLE
+      - JP-UDP4-KHANWEB
       - SG-UDP6-FK
       - SG-UDP4-AWS
-      - JP-UDP4-KHANWEB
-      - JP-UDP4-ORACLE
       - 日本节点
       - 美国节点
       - 新加坡节点
@@ -377,7 +377,7 @@ proxy-groups:
       - 其他备用
     url: "http://latency-test.skk.moe/endpoint"
     interval: 180
-    timeout: 1500
+    timeout: 300
     lazy: true
   - name: 香港节点
     type: url-test
