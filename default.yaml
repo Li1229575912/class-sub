@@ -366,10 +366,10 @@ proxy-groups:
   - name: 优选UDP优先代理
     type: fallback
     proxies:
-      - JP-UDP4-ORACLE
-      - SG-UDP4-AWS
       - SG-UDP6-FK
+      - SG-UDP4-AWS
       - JP-UDP4-KHANWEB
+      - JP-UDP4-ORACLE
       - 日本节点
       - 美国节点
       - 新加坡节点
