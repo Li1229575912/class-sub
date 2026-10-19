@@ -173,28 +173,15 @@ proxies:
     password: 3cb78393-b7dd-49fe-96b8-0d55a0757c36
     skip-cert-verify: true
     pinned-sha256: FB47D3EE558C0BC06B5E9691B0E1C7C2EDD37B8D039FEC53CCC5136FDE25EB58
-  - name: "JP-TCP4-KHANWEB"
-    type: vless
-    server: 103.179.45.197
-    port: 10201
-    uuid: 51f2de32-c2e9-436d-9215-d7faf0a7eaca
-    network: tcp
-    tls: true
-    udp: true
-    flow: xtls-rprx-vision
-    servername: www.amazon.com
-    reality-opts:
-      public-key: jf3_HHJeo4of-k6rMqSvE4lfs41FSg8iYAdHzGiViU0
-    client-fingerprint: chrome
   - name: "JP-UDP4-KHANWEB"
     type: hysteria2
     server: 103.179.45.197
-    port: 10202
-    password: a5ceb891-ea37-4ee3-a733-8cfb619e2e4f
+    port: 10203
+    password: HBKZov4cv3
     up: 100 Mbps
     down: 200 Mbps
     skip-cert-verify: true
-    pinned-sha256: fac5f8800b3dc0555641338e8d40032ab08795e1195316c09dc587239b3bedc6
+    pinned-sha256: b77b007323b503f5a839a79a03e6905d2f7e643820b148b77453c50c896e56f3
     ports: 10203-10220
     hop-interval: 30
   - name: "TW-UDP4-FK"
@@ -431,7 +418,6 @@ proxy-groups:
       - jp-cftun
       - jp-cftun-电信
       - us-cftun
-      - JP-TCP4-KHANWEB
       - DIRECT
     url: 'http://latency-test.skk.moe/endpoint'
     interval: 180
