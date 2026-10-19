@@ -182,8 +182,6 @@ proxies:
     down: 200 Mbps
     skip-cert-verify: true
     pinned-sha256: b77b007323b503f5a839a79a03e6905d2f7e643820b148b77453c50c896e56f3
-    ports: 10203-10220
-    hop-interval: 30
   - name: "TW-UDP4-FK"
     type: hysteria2
     server: 202.160.76.247
