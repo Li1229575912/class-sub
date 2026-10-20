@@ -122,6 +122,28 @@ tun:
     - 'any:53'
   auto-redirect: false
 proxies:
+  - name: "潘达35服-US-UDP4"
+    type: hysteria2
+    server: 23.144.124.7
+    port: 41998
+    password: 10e909ba-09d0-4aab-9964-b2c1611a95e2
+    skip-cert-verify: true
+    pinned-sha256: 5dc667d2cda6d8bb00188ccd94ab5f321bc5a4dec6faefa4ae08c6690f716772
+    ports: 42000-42026
+    hop-interval: 30
+  - name: "潘达35服-US-TCP4"
+    type: vless
+    server: 23.144.124.7
+    port: 41997
+    uuid: fd42c09f-331e-474a-87d5-14d12e6e3bdf
+    network: tcp
+    udp: true
+    tls: true
+    flow: xtls-rprx-vision
+    servername: aws.amazon.com
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: 3W7VD3KLzRgK_ENzlv849AOUV8Acew0IrZBWu_SrJzE
   - name: "JP-TCP4-ORACLE"
     type: vless
     server: 168.110.63.237
@@ -351,10 +373,11 @@ proxy-groups:
   - name: 优选UDP优先代理
     type: fallback
     proxies:
-      - JP-UDP4-ORACLE
-      - JP-UDP4-KHANWEB
       - SG-UDP6-FK
       - SG-UDP4-AWS
+      - JP-UDP4-KHANWEB
+      - JP-UDP4-ORACLE
+      - 潘达35服-US-UDP4
       - 日本节点
       - 美国节点
       - 新加坡节点
@@ -399,6 +422,8 @@ proxy-groups:
   - name: 美国节点
     type: url-test
     proxies:
+      - 潘达35服-US-UDP4
+      - 潘达35服-US-TCP4
       - US-UDP4-GCP
     url: 'http://latency-test.skk.moe/endpoint'
     interval: 180
@@ -426,6 +451,7 @@ proxy-groups:
     proxies:
       - SG-UDP6-FK
       - JP-UDP4-KHANWEB
+      - 潘达35服-US-UDP4
       - 香港节点
       - 日本节点
       - 主代理
