@@ -122,33 +122,31 @@ tun:
     - 'any:53'
   auto-redirect: false
 proxies:
-  - name: "HK-TCP-CMIN2"
+  - name: "HK-UDP4-UQIDC"
+    type: hysteria2
+    server: cdn-hk1.lightbook.cn
+    port: 41998
+    password: j6208tuQkv
+    sni: www.bing.com
+    up: "100 Mbps"
+    down: "500 Mbps"
+    skip-cert-verify: true
+    pinned-sha256: 4e72db97566a147fd7aa462f81b6f352c8d58bacd84abe32f75ae84b051e999a
+    obfs: salamander
+    obfs-password: l1229575912
+  - name: "HK-TCP4-UQIDC"
     type: vless
-    server: cdnhk.lightbook.cn
+    server: cdn-hk1.lightbook.cn
     port: 41997
-    uuid: 314ee016-0ef5-4950-a50d-991f4e676e57
-    cipher: none
+    uuid: bbd4cd65-3f2d-48ea-9ce5-e412ae89c817
+    network: tcp
     udp: true
     tls: true
     flow: xtls-rprx-vision
     servername: www.amazon.com
-    network: tcp
     client-fingerprint: chrome
-    ip-version: ipv6-prefer
     reality-opts:
-      public-key: xrUNa92iPhMLeDI7WcmBrJl6p5IWDxOSxV9KkZd1Rk8
-      short-id: "56"
-  - name: "HK-UDP-CMIN2"
-    type: hysteria2
-    server: cdnhk.lightbook.cn
-    port: 41998
-    password: Qg5FxYGUMr
-    sni: www.bing.com
-    skip-cert-verify: true
-    obfs: salamander
-    obfs-password: l1229575912
-    pinned-sha256: 499dfdaad786130be06282da58341347bc11052e0612ae0f99578424d8df196c
-    ip-version: ipv6-prefer
+      public-key: kEGILVsiHoz2yyXqwPwW6XTC2VLovQYS3QrdwFmVDkA
   - name: "JP-TCP4-ORACLE"
     type: vless
     server: 168.110.63.237
@@ -378,7 +376,7 @@ proxy-groups:
   - name: 优选UDP优先代理
     type: fallback
     proxies:
-      - HK-UDP-CMIN2
+      - HK-UDP4-UQIDC
       - SG-UDP6-FK
       - SG-UDP4-AWS
       - JP-UDP4-KHANWEB
@@ -398,8 +396,8 @@ proxy-groups:
       - hysteria2-57707
       - hysteria2-safety
       - vless-8080
-      - HK-UDP-CMIN2
-      - HK-TCP-CMIN2
+      - HK-UDP4-UQIDC
+      - HK-TCP4-UQIDC
     url: 'http://latency-test.skk.moe/endpoint'
     interval: 180
     tolerance: 25
@@ -454,7 +452,7 @@ proxy-groups:
   - name: 在线视频
     type: fallback
     proxies:
-      - HK-UDP-CMIN2
+      - HK-UDP4-UQIDC
       - SG-UDP6-FK
       - JP-UDP4-KHANWEB
       - 香港节点
