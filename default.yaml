@@ -169,13 +169,6 @@ proxies:
     pinned-sha256: 6307285404EF430BA42A441AC24706C97C3CA1607D4A80D313CC19A509D592E5
     ports: 42000-50000
     hop-interval: 30
-  - name: "JP-UDP4-ORACLE2"
-    type: hysteria2
-    server: 151.145.74.4
-    port: 41998
-    password: 62018bfa-e7cc-4272-bea7-a0412635275c
-    skip-cert-verify: true
-    pinned-sha256: 6307285404EF430BA42A441AC24706C97C3CA1607D4A80D313CC19A509D592E5
   - name: "JP-TCP4-AWS"
     type: vless
     server: 2406:da14:1a63:d100:ae60:31a9:1548:ab96
@@ -330,14 +323,12 @@ proxy-groups:
       - 新加坡节点
       - 美国节点
       - 其他备用
-      - JP-自动优选
       - DIRECT
   - name: 优选UDP优先代理
     type: fallback
     proxies:
       - HK-UDP4-UQIDC
       - JP-UDP4-AWS
-      - JP-自动优选
       - SG-UDP6-FK
       - JP-UDP4-KHANWEB
       - JP-UDP4-ORACLE
@@ -404,16 +395,6 @@ proxy-groups:
     interval: 180
     tolerance: 25
     lazy: true
-  - name: "JP-自动优选"
-    type: url-test
-    url: 'http://latency-test.skk.moe/endpoint'
-    interval: 30
-    tolerance: 0
-    lazy: false
-    proxies:
-      - "JP-UDP4-KHANWEB"
-      - "JP-UDP4-ORACLE"
-      - "JP-UDP4-ORACLE2"
   - name: 在线视频
     type: fallback
     proxies:
