@@ -169,28 +169,39 @@ proxies:
     pinned-sha256: 6307285404EF430BA42A441AC24706C97C3CA1607D4A80D313CC19A509D592E5
     ports: 42000-50000
     hop-interval: 30
-  - name: "SG-TCP4-AWS"
+  - name: "JP-UDP4-ORACLE2"
+    type: hysteria2
+    server: 151.145.74.4
+    port: 41998
+    password: 62018bfa-e7cc-4272-bea7-a0412635275c
+    skip-cert-verify: true
+    pinned-sha256: 6307285404EF430BA42A441AC24706C97C3CA1607D4A80D313CC19A509D592E5
+  - name: "JP-TCP4-AWS"
     type: vless
-    server: 13.229.204.126
-    port: 41997
-    uuid: 798f9870-ac3a-416b-8a62-422d9a36b3e0
+    server: 2406:da14:1a63:d100:ae60:31a9:1548:ab96
+    port: 443
+    uuid: eee4babd-31f9-41da-839d-f1214a333544
     network: tcp
     udp: true
     tls: true
     flow: xtls-rprx-vision
-    servername: aws.amazon.com
+    servername: www.amazon.com
     client-fingerprint: chrome
     reality-opts:
-      public-key: h042RM2-LolvzszVsx_qPTHyHUdlfLGvHyHBkud66Fc
-  - name: "SG-UDP4-AWS"
+      public-key: IhxBSlHFQ14Vo3_KPmZmYIWglOSqJuGdH_kNbe4tHHQ
+      short-id: e1fe737f
+  - name: "JP-UDP4-AWS"
     type: hysteria2
-    server: 13.229.204.126
-    port: 41998
-    password: 20bbdbe2-1299-4dd9-bfe8-5677012d3205
+    server: 2406:da14:1a63:d100:ae60:31a9:1548:ab96
+    port: 38680
+    password: 66DzLBpM3B
+    sni: www.bing.com
     skip-cert-verify: true
-    pinned-sha256: C9859C9A735D7FBC84767F593F81689CD78E4C81CB0474D5B7E75B998FC9BFF9
-    ports: 42000-50000
-    hop-interval: 30
+    pinned-sha256: 06c3a82ecde414ac2bbe23e5509e8068f6af9a4f94064aef8285ba376dbdf1a7
+    obfs: salamander
+    obfs-password: "l1229575912"
+    up: 200 Mbps
+    down: 500 Mbps
   - name: "US-UDP4-GCP"
     type: hysteria2
     server: 168.110.63.237
@@ -273,59 +284,6 @@ proxies:
     password: PY1kLRStaR
     sni: sub.lightbook.cn
     skip-cert-verify: true
-  - name: SG-TCP4-SC
-    type: vless
-    server: 195.172.139.22
-    port: 41997
-    uuid: 331ff677-f404-44a3-8034-0dcdbcf5009c
-    flow: xtls-rprx-vision
-    tls: true
-    servername: www.cloudflare.com
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: kSzxEsckqnBYc2cCiavhz7t-fqQ57Fq0WY3FiVxtPko
-      short-id: ""
-  - name: SG-TCP6-SC
-    type: vless
-    server: 2a13:edc0:1:1b::a
-    port: 41997
-    uuid: 331ff677-f404-44a3-8034-0dcdbcf5009c
-    flow: xtls-rprx-vision
-    tls: true
-    servername: www.cloudflare.com
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: kSzxEsckqnBYc2cCiavhz7t-fqQ57Fq0WY3FiVxtPko
-      short-id: ""
-  - name: SG-UDP4-SC
-    type: hysteria2
-    server: 195.172.139.22
-    port: 42000
-    password: "dd8c0319-9b8f-4daf-88f9-f535c1094681"
-    alpn:
-      - h3
-    skip-cert-verify: true
-    pinned-sha256: "6EB7493F587C4EEDA6C9367998BCEF2DA3A627075C15B454B66A9A2E8DB466F1"
-  - name: SG-UDP6-SC
-    type: hysteria2
-    server: 2a13:edc0:1:1b::a
-    port: 42000
-    password: "dd8c0319-9b8f-4daf-88f9-f535c1094681"
-    alpn:
-      - h3
-    skip-cert-verify: true
-    pinned-sha256: "6EB7493F587C4EEDA6C9367998BCEF2DA3A627075C15B454B66A9A2E8DB466F1"
-  - name: "SG-TCP6-FK2"
-    type: vless
-    server: "2406:ef80:2:5c32:e777:7aa0:b8c6:6d90"
-    port: 42101
-    uuid: "7a84ea44-c47e-4d2a-9fd7-3db6c639447c"
-    flow: xtls-rprx-vision
-    tls: true
-    servername: www.amazon.com
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: g6CpxJhRYqaw2NOnxiP9LEWTGsZ4xteBXEO2Z7IyE0M
   - name: jp-cftun
     type: vless
     server: cfcm.012889.xyz
@@ -372,13 +330,15 @@ proxy-groups:
       - 新加坡节点
       - 美国节点
       - 其他备用
+      - JP-自动优选
       - DIRECT
   - name: 优选UDP优先代理
     type: fallback
     proxies:
       - HK-UDP4-UQIDC
+      - JP-UDP4-AWS
+      - JP-自动优选
       - SG-UDP6-FK
-      - SG-UDP4-AWS
       - JP-UDP4-KHANWEB
       - JP-UDP4-ORACLE
       - 日本节点
@@ -405,6 +365,8 @@ proxy-groups:
   - name: 日本节点
     type: url-test
     proxies:
+      - JP-UDP4-AWS
+      - JP-TCP4-AWS
       - JP-UDP4-ORACLE
       - JP-TCP4-ORACLE
       - JP-UDP4-KHANWEB
@@ -415,11 +377,8 @@ proxy-groups:
   - name: 新加坡节点
     type: url-test
     proxies:
-      - SG-UDP4-AWS
-      - SG-TCP4-AWS
       - SG-UDP6-FK
       - SG-TCP6-FK
-      - SG-TCP6-FK2
     url: 'http://latency-test.skk.moe/endpoint'
     interval: 180
     tolerance: 25
@@ -435,10 +394,6 @@ proxy-groups:
   - name: 其他备用
     type: url-test
     proxies:
-      - SG-UDP6-SC
-      - SG-UDP4-SC
-      - SG-TCP4-SC
-      - SG-TCP6-SC
       - TW-UDP4-FK
       - TW-TCP4-FK
       - jp-cftun
@@ -449,6 +404,16 @@ proxy-groups:
     interval: 180
     tolerance: 25
     lazy: true
+  - name: "JP-自动优选"
+    type: url-test
+    url: 'http://latency-test.skk.moe/endpoint'
+    interval: 30
+    tolerance: 0
+    lazy: false
+    proxies:
+      - "JP-UDP4-KHANWEB"
+      - "JP-UDP4-ORACLE"
+      - "JP-UDP4-ORACLE2"
   - name: 在线视频
     type: fallback
     proxies:
