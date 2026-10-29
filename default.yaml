@@ -20,7 +20,6 @@ profile:
   store-fake-ip: false
 unified-delay: true
 tcp-concurrent: true
-global-client-fingerprint: chrome
 dns:
   enable: true
   listen: '[::]:1053'
@@ -276,24 +275,6 @@ proxies:
     client-fingerprint: chrome
     reality-opts:
       public-key: aFISYkknPca_ce1hjYD4WOE74S3sA16qndUm9tvXjAk
-  - name: "SG-UDP6-FK"
-    type: hysteria2
-    server: "2407:d840:21:114:514::f9"
-    port: 41998
-    password: "b5e57d76-5739-4656-83b5-badc636f30cd"
-    skip-cert-verify: true
-    pinned-sha256: "1CC24AC3162ECAAE2CAB6EA39046B46D9D80A3939794C2FA01FC03035D686219"
-  - name: "SG-TCP6-FK"
-    type: vless
-    server: "2407:d840:21:114:514::f9"
-    port: 41997
-    uuid: "9ae16182-9aa7-49cb-a1fb-c7c85ea15e3b"
-    flow: xtls-rprx-vision
-    tls: true
-    servername: www.amazon.com
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: BzrCQZVkdS2-Kkzm9LzUypp5yYmtIN9UJZsrJJFl5x0
   - name: jp-cftun
     type: vless
     server: cfcm.012889.xyz
@@ -334,7 +315,6 @@ proxy-groups:
     proxies:
       - HK-UDP4-UQIDC
       - JP-UDP4-AWS
-      - SG-UDP6-FK
       - JP-UDP4-KHANWEB
       - JP-UDP4-O2
       - JP-UDP4-O1
@@ -373,8 +353,7 @@ proxy-groups:
   - name: 新加坡节点
     type: url-test
     proxies:
-      - SG-UDP6-FK
-      - SG-TCP6-FK
+      - DIRECT
     url: 'http://latency-test.skk.moe/endpoint'
     interval: 180
     tolerance: 25
@@ -406,7 +385,6 @@ proxy-groups:
     type: fallback
     proxies:
       - HK-UDP4-UQIDC
-      - SG-UDP6-FK
       - JP-UDP4-KHANWEB
       - 香港节点
       - 日本节点
