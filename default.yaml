@@ -122,6 +122,56 @@ tun:
     - 'any:53'
   auto-redirect: false
 proxies:
+- name: "JP-UDP4-O2"
+    type: hysteria2
+    server: cdn-jp2.lightbook.cn
+    port: 41800
+    password: 4al4dg3dwD
+    sni: aws.amazon.com
+    skip-cert-verify: true
+    pinned-sha256: 00d93d15ec919b74593ace501c8f3ab79ad8e036f6b768be22445783e5925240
+    obfs: salamander
+    obfs-password: l1229575912
+  - name: "JP-UDP4-O1"
+    type: hysteria2
+    server: cdn-jp1.lightbook.cn
+    port: 41800
+    password: rvu8upWoQV
+    sni: aws.amazon.com
+    skip-cert-verify: true
+    pinned-sha256: 3e873c3f7565633cd90ab9f835e6a5ca5043f1d88b80082c63a036e136d8a3b9
+    obfs: salamander
+    obfs-password: l1229575912
+  - name: "US-UDP4-FKIP美西10M"
+    type: hysteria2
+    server: 156.238.224.88
+    port: 41900
+    password: j9YGBHY6YQ
+    sni: aws.amazon.com
+    skip-cert-verify: true
+    pinned-sha256: e7d4dbea2dd50125e2dfac7c5d065ff568bbdc531bbf913c3cf10964c012db32
+    obfs: salamander
+    obfs-password: l1229575912
+  - name: "US-UDP4-AWS美东"
+    type: hysteria2
+    server: 77.114.72.125
+    port: 41800
+    password: wXeunakRep
+    sni: www.bing.com
+    skip-cert-verify: true
+    pinned-sha256: 0fc1fbd3a559c98832e540f86661d7b209b76dd697fde57bdd54bd843df1d40c
+    obfs: salamander
+    obfs-password: l1229575912
+  - name: "US-UDP4-CC美西"
+    type: hysteria2
+    server: us.lightbook.cn
+    port: 41800
+    password: j9YGBHY6YQ
+    sni: www.bing.com
+    skip-cert-verify: true
+    pinned-sha256: 3a9a91a8551eff93fb95521782d7a0b72de32d04efa6652e5ab7a110074dccd9
+    obfs: salamander
+    obfs-password: l1229575912
   - name: "HK-UDP4-UQIDC"
     type: hysteria2
     server: cdn-hk1.lightbook.cn
@@ -147,28 +197,6 @@ proxies:
     client-fingerprint: chrome
     reality-opts:
       public-key: kEGILVsiHoz2yyXqwPwW6XTC2VLovQYS3QrdwFmVDkA
-  - name: "JP-TCP4-ORACLE"
-    type: vless
-    server: 168.110.63.237
-    port: 14816
-    uuid: 3f9f9441-2fc6-4a4d-bc73-5324d16607b5
-    network: tcp
-    udp: true
-    tls: true
-    flow: xtls-rprx-vision
-    servername: dash.cloudflare.com
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: n34FivzgzWFwMdH02PrvjVD43TfFNc_W095pZs7knVk
-  - name: "JP-UDP4-ORACLE"
-    type: hysteria2
-    server: 168.110.63.237
-    port: 41998
-    password: 62018bfa-e7cc-4272-bea7-a0412635275c
-    skip-cert-verify: true
-    pinned-sha256: 6307285404EF430BA42A441AC24706C97C3CA1607D4A80D313CC19A509D592E5
-    ports: 42000-50000
-    hop-interval: 30
   - name: "JP-TCP4-AWS"
     type: vless
     server: 2406:da14:1a63:d100:ae60:31a9:1548:ab96
@@ -218,6 +246,31 @@ proxies:
     password: "04fd039b-a576-4209-8bf8-04958fed4ec6"
     skip-cert-verify: true
     pinned-sha256: "8B08C401BC6BD818AF8019BA8292F5C2A092F4C2C8B768FDEB94840352C28450"
+  - name: "JP-TCP4-O2"
+    type: ss
+    server: cdn-jp2.lightbook.cn
+    port: 8443
+    cipher: 2022-blake3-aes-128-gcm
+    password: oGajieUiCF2IzTfugg9ENw==:KvWSDomSgUq67CmJ7PjHAQ==
+  - name: "JP-TCP4-O1"
+    type: ss
+    server: cdn-jp1.lightbook.cn
+    port: 8443
+    cipher: 2022-blake3-aes-128-gcm
+    password: 98y/IUY+VjC9PNu7lzJ1xg==:9ujKO12h3M8dZIUw9VPX5Q==
+  - name: "US-TCP4-CC美西"
+    type: vless
+    server: cfcm.012889.xyz
+    port: 443
+    uuid: 6febda08-44b2-4648-b870-9f67b38dd6c0
+    network: ws
+    tls: true
+    servername: v2.lightbook.cn
+    skip-cert-verify: false
+    ws-opts:
+      path: /qwer
+      headers:
+        Host: v2.lightbook.cn
   - name: "TW-TCP4-FK"
     type: vless
     server: 202.160.76.247
@@ -247,36 +300,6 @@ proxies:
     client-fingerprint: chrome
     reality-opts:
       public-key: BzrCQZVkdS2-Kkzm9LzUypp5yYmtIN9UJZsrJJFl5x0
-  - name: hysteria2-57707
-    type: hysteria2
-    server: www.lightbook.cn
-    port: 57707
-    password: PY1kLRStaR
-    obfs: salamander
-    obfs-password: l1229575912
-    sni: sub.lightbook.cn
-    skip-cert-verify: true
-    alpn:
-      - h3
-  - name: vless-8080
-    type: vless
-    server: www.lightbook.cn
-    port: 8080
-    uuid: 9ae16182-9aa7-49cb-a1fb-c7c85ea15e3b
-    flow: xtls-rprx-vision
-    tls: true
-    servername: s0.awsstatic.com
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: RyAcRpZPI1DK19Ille8CFYW8MnIWfxCIFRQBeJjjGmc
-      short-id: a06d2d7ab9
-  - name: hysteria2-safety
-    type: hysteria2
-    server: www.lightbook.cn
-    port: 42973
-    password: PY1kLRStaR
-    sni: sub.lightbook.cn
-    skip-cert-verify: true
   - name: jp-cftun
     type: vless
     server: cfcm.012889.xyz
@@ -301,18 +324,6 @@ proxies:
       path: /qwer
       headers:
         Host: v1.lightbook.cn
-  - name: us-cftun
-    type: vless
-    server: cfcm.012889.xyz
-    port: 443
-    uuid: 6febda08-44b2-4648-b870-9f67b38dd6c0
-    tls: true
-    servername: v2.lightbook.cn
-    network: ws
-    ws-opts:
-      path: /qwer
-      headers:
-        Host: v2.lightbook.cn
 proxy-groups:
   - name: 主代理
     type: select
@@ -331,7 +342,8 @@ proxy-groups:
       - JP-UDP4-AWS
       - SG-UDP6-FK
       - JP-UDP4-KHANWEB
-      - JP-UDP4-ORACLE
+      - JP-UDP4-O2
+      - JP-UDP4-O1
       - 日本节点
       - 美国节点
       - 新加坡节点
@@ -344,9 +356,6 @@ proxy-groups:
   - name: 香港节点
     type: url-test
     proxies:
-      - hysteria2-57707
-      - hysteria2-safety
-      - vless-8080
       - HK-UDP4-UQIDC
       - HK-TCP4-UQIDC
     url: 'http://latency-test.skk.moe/endpoint'
@@ -358,8 +367,12 @@ proxy-groups:
     proxies:
       - JP-UDP4-AWS
       - JP-TCP4-AWS
-      - JP-UDP4-ORACLE
-      - JP-TCP4-ORACLE
+      - JP-TCP4-O1
+      - JP-TCP4-O2
+      - JP-UDP4-O2
+      - JP-UDP4-O1
+      - JP-TCP4-O1
+      - JP-TCP4-O2
       - JP-UDP4-KHANWEB
     url: 'http://latency-test.skk.moe/endpoint'
     interval: 180
@@ -377,7 +390,9 @@ proxy-groups:
   - name: 美国节点
     type: url-test
     proxies:
-      - US-UDP4-GCP
+      - US-UDP4-FKIP美西10M
+      - US-UDP4-AWS美东
+      - US-UDP4-CC美西
     url: 'http://latency-test.skk.moe/endpoint'
     interval: 180
     tolerance: 25
@@ -389,7 +404,7 @@ proxy-groups:
       - TW-TCP4-FK
       - jp-cftun
       - jp-cftun-电信
-      - us-cftun
+      - US-TCP4-CC美西
       - DIRECT
     url: 'http://latency-test.skk.moe/endpoint'
     interval: 180
