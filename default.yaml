@@ -122,7 +122,7 @@ tun:
     - 'any:53'
   auto-redirect: false
 proxies:
-- name: "JP-UDP4-O2"
+  - name: "JP-UDP4-O2"
     type: hysteria2
     server: cdn-jp2.lightbook.cn
     port: 41800
@@ -178,8 +178,6 @@ proxies:
     port: 41998
     password: j6208tuQkv
     sni: www.bing.com
-    up: "100 Mbps"
-    down: "500 Mbps"
     skip-cert-verify: true
     pinned-sha256: 4e72db97566a147fd7aa462f81b6f352c8d58bacd84abe32f75ae84b051e999a
     obfs: salamander
@@ -221,8 +219,6 @@ proxies:
     pinned-sha256: 06c3a82ecde414ac2bbe23e5509e8068f6af9a4f94064aef8285ba376dbdf1a7
     obfs: salamander
     obfs-password: "l1229575912"
-    up: 200 Mbps
-    down: 500 Mbps
   - name: "US-UDP4-GCP"
     type: hysteria2
     server: 168.110.63.237
@@ -235,8 +231,6 @@ proxies:
     server: 103.179.45.197
     port: 10203
     password: HBKZov4cv3
-    up: 100 Mbps
-    down: 200 Mbps
     skip-cert-verify: true
     pinned-sha256: b77b007323b503f5a839a79a03e6905d2f7e643820b148b77453c50c896e56f3
   - name: "TW-UDP4-FK"
@@ -371,8 +365,6 @@ proxy-groups:
       - JP-TCP4-O2
       - JP-UDP4-O2
       - JP-UDP4-O1
-      - JP-TCP4-O1
-      - JP-TCP4-O2
       - JP-UDP4-KHANWEB
     url: 'http://latency-test.skk.moe/endpoint'
     interval: 180
