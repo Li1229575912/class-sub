@@ -181,6 +181,12 @@ proxies:
     pinned-sha256: 4e72db97566a147fd7aa462f81b6f352c8d58bacd84abe32f75ae84b051e999a
     obfs: salamander
     obfs-password: l1229575912
+  - name: "HK-TCP4-UQIDCSS"
+    type: ss
+    server: cdn-hk1.lightbook.cn
+    port: 13219
+    cipher: 2022-blake3-aes-128-gcm
+    password: P0eqlyp4T7MsuBXOnBxp5g==:tmGM/QgknepD6F+Lvm2hDw==
   - name: "HK-TCP4-UQIDC"
     type: vless
     server: cdn-hk1.lightbook.cn
@@ -190,10 +196,11 @@ proxies:
     udp: true
     tls: true
     flow: xtls-rprx-vision
-    servername: www.amazon.com
+    servername: itunes.apple.com
     client-fingerprint: chrome
     reality-opts:
-      public-key: kEGILVsiHoz2yyXqwPwW6XTC2VLovQYS3QrdwFmVDkA
+      public-key: fi-pLLSFGTcqI99A9H4qynNPS0YmkDu6dQhm-ZUvMzY
+      short-id: 4f2b2254
   - name: "JP-TCP4-AWS"
     type: vless
     server: 2406:da14:1a63:d100:ae60:31a9:1548:ab96
@@ -332,6 +339,7 @@ proxy-groups:
     proxies:
       - HK-UDP4-UQIDC
       - HK-TCP4-UQIDC
+      - HK-TCP4-UQIDCSS
     url: 'http://latency-test.skk.moe/endpoint'
     interval: 180
     tolerance: 25
