@@ -195,28 +195,28 @@ proxies:
     reality-opts:
       public-key: fi-pLLSFGTcqI99A9H4qynNPS0YmkDu6dQhm-ZUvMzY
       short-id: 4f2b2254
-  - name: "SG-UDP6-AWS"
-    type: hysteria2
-    server: aws-sg.lightbook.cn
-    port: 41800
-    password: 8xzLtnAtPQ
-    sni: aws.amazon.com
-    skip-cert-verify: true
-    pinned-sha256: 20ebfb5412cfc9deae912e799aa78cf2e715e93bce5c29bce799b315f9b44140
-    obfs: salamander
-    obfs-password: l1229575912
-  - name: "SG-TCP6-AWS"
+  - name: "JP-TCP4-AWS"
     type: vless
-    server: aws-sg.lightbook.cn
+    server: aws-jp.lightbook.cn
     port: 443
-    uuid: 32b3b4ea-3b4a-49b6-9fc7-4e0a78448da5
+    uuid: 4dbc20c4-1f6e-497e-9ebf-0ea5b12e4b9e
     flow: xtls-rprx-vision
     tls: true
     servername: aws.amazon.com
     client-fingerprint: chrome
     reality-opts:
-      public-key: KzS9eNYI2WYUm3nsD_d-D50rHpgy7YT_8MLpgaoMKD8
-      short-id: c6ca1e
+      public-key: Qhazd280V-zxd8IRgh0JTpHrKfLM4xrT0sAd-wGlaHQ
+      short-id: cf5a
+  - name: "JP-UDP4-AWS"
+    type: hysteria2
+    server: aws-jp.lightbook.cn
+    port: 41800
+    password: oY8CkZynbl
+    sni: aws.amazon.com
+    skip-cert-verify: true
+    pinned-sha256: cb3390bceeff503ccddcc640c275069252ea7c8c2134cf5ba499238cd2731067
+    obfs: salamander
+    obfs-password: l1229575912
   - name: "US-UDP4-GCP"
     type: hysteria2
     server: 168.110.63.237
@@ -304,7 +304,7 @@ proxy-groups:
     type: fallback
     proxies:
       - HK-UDP4-UQIDC
-      - SG-UDP6-AWS
+      - JP-UDP4-AWS
       - JP-UDP4-KHANWEB
       - JP-UDP4-O2
       - JP-UDP4-O1
@@ -331,6 +331,8 @@ proxy-groups:
     proxies:
       - JP-UDP4-O2
       - JP-UDP4-O1
+      - JP-UDP4-AWS
+      - JP-TCP4-AWS
       - JP-UDP4-KHANWEB
     url: 'http://latency-test.skk.moe/endpoint'
     interval: 180
@@ -339,8 +341,7 @@ proxy-groups:
   - name: 新加坡节点
     type: url-test
     proxies:
-      - SG-UDP6-AWS
-      - SG-TCP6-AWS
+      - DIRECT
     url: 'http://latency-test.skk.moe/endpoint'
     interval: 180
     tolerance: 25
