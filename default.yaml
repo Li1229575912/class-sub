@@ -195,30 +195,28 @@ proxies:
     reality-opts:
       public-key: fi-pLLSFGTcqI99A9H4qynNPS0YmkDu6dQhm-ZUvMzY
       short-id: 4f2b2254
-  - name: "JP-TCP4-AWS"
+  - name: "SG-UDP6-AWS"
+    type: hysteria2
+    server: aws-sg.lightbook.cn
+    port: 41800
+    password: 8xzLtnAtPQ
+    sni: aws.amazon.com
+    skip-cert-verify: true
+    pinned-sha256: 20ebfb5412cfc9deae912e799aa78cf2e715e93bce5c29bce799b315f9b44140
+    obfs: salamander
+    obfs-password: l1229575912
+  - name: "SG-TCP6-AWS"
     type: vless
-    server: 2406:da14:1a63:d100:ae60:31a9:1548:ab96
+    server: aws-sg.lightbook.cn
     port: 443
-    uuid: eee4babd-31f9-41da-839d-f1214a333544
-    network: tcp
-    udp: true
-    tls: true
+    uuid: 32b3b4ea-3b4a-49b6-9fc7-4e0a78448da5
     flow: xtls-rprx-vision
-    servername: www.amazon.com
+    tls: true
+    servername: aws.amazon.com
     client-fingerprint: chrome
     reality-opts:
-      public-key: IhxBSlHFQ14Vo3_KPmZmYIWglOSqJuGdH_kNbe4tHHQ
-      short-id: e1fe737f
-  - name: "JP-UDP4-AWS"
-    type: hysteria2
-    server: 2406:da14:1a63:d100:ae60:31a9:1548:ab96
-    port: 38680
-    password: 66DzLBpM3B
-    sni: www.bing.com
-    skip-cert-verify: true
-    pinned-sha256: 06c3a82ecde414ac2bbe23e5509e8068f6af9a4f94064aef8285ba376dbdf1a7
-    obfs: salamander
-    obfs-password: "l1229575912"
+      public-key: KzS9eNYI2WYUm3nsD_d-D50rHpgy7YT_8MLpgaoMKD8
+      short-id: c6ca1e
   - name: "US-UDP4-GCP"
     type: hysteria2
     server: 168.110.63.237
@@ -306,7 +304,7 @@ proxy-groups:
     type: fallback
     proxies:
       - HK-UDP4-UQIDC
-      - JP-UDP4-AWS
+      - SG-UDP6-AWS
       - JP-UDP4-KHANWEB
       - JP-UDP4-O2
       - JP-UDP4-O1
@@ -331,8 +329,6 @@ proxy-groups:
   - name: 日本节点
     type: url-test
     proxies:
-      - JP-UDP4-AWS
-      - JP-TCP4-AWS
       - JP-UDP4-O2
       - JP-UDP4-O1
       - JP-UDP4-KHANWEB
@@ -343,7 +339,8 @@ proxy-groups:
   - name: 新加坡节点
     type: url-test
     proxies:
-      - DIRECT
+      - SG-UDP6-AWS
+      - SG-TCP6-AWS
     url: 'http://latency-test.skk.moe/endpoint'
     interval: 180
     tolerance: 25
