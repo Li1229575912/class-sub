@@ -229,10 +229,13 @@ proxies:
   - name: "JP-UDP4-KHANWEB"
     type: hysteria2
     server: 103.179.45.197
-    port: 10203
-    password: HBKZov4cv3
+    port: 10201
+    password: j9YGBHY6YQ
+    sni: aws.amazon.com
     skip-cert-verify: true
-    pinned-sha256: b77b007323b503f5a839a79a03e6905d2f7e643820b148b77453c50c896e56f3
+    pinned-sha256: 76cfa8d8fe7863b8cdb740449d00bb263044577c02c7793192ab883249ec73ae
+    obfs: salamander
+    obfs-password: l1229575912
   - name: "TW-UDP4-FK"
     type: hysteria2
     server: 202.160.76.247
