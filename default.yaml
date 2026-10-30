@@ -181,12 +181,6 @@ proxies:
     pinned-sha256: 4e72db97566a147fd7aa462f81b6f352c8d58bacd84abe32f75ae84b051e999a
     obfs: salamander
     obfs-password: l1229575912
-  - name: "HK-TCP4-UQIDCSS"
-    type: ss
-    server: cdn-hk1.lightbook.cn
-    port: 13219
-    cipher: 2022-blake3-aes-128-gcm
-    password: P0eqlyp4T7MsuBXOnBxp5g==:tmGM/QgknepD6F+Lvm2hDw==
   - name: "HK-TCP4-UQIDC"
     type: vless
     server: cdn-hk1.lightbook.cn
@@ -246,18 +240,6 @@ proxies:
     password: "04fd039b-a576-4209-8bf8-04958fed4ec6"
     skip-cert-verify: true
     pinned-sha256: "8B08C401BC6BD818AF8019BA8292F5C2A092F4C2C8B768FDEB94840352C28450"
-  - name: "JP-TCP4-O2"
-    type: ss
-    server: cdn-jp2.lightbook.cn
-    port: 8443
-    cipher: 2022-blake3-aes-128-gcm
-    password: oGajieUiCF2IzTfugg9ENw==:KvWSDomSgUq67CmJ7PjHAQ==
-  - name: "JP-TCP4-O1"
-    type: ss
-    server: cdn-jp1.lightbook.cn
-    port: 8443
-    cipher: 2022-blake3-aes-128-gcm
-    password: 98y/IUY+VjC9PNu7lzJ1xg==:9ujKO12h3M8dZIUw9VPX5Q==
   - name: "US-TCP4-CC美西"
     type: vless
     server: cfcm.012889.xyz
@@ -339,7 +321,6 @@ proxy-groups:
     proxies:
       - HK-UDP4-UQIDC
       - HK-TCP4-UQIDC
-      - HK-TCP4-UQIDCSS
     url: 'http://latency-test.skk.moe/endpoint'
     interval: 180
     tolerance: 25
@@ -349,8 +330,6 @@ proxy-groups:
     proxies:
       - JP-UDP4-AWS
       - JP-TCP4-AWS
-      - JP-TCP4-O1
-      - JP-TCP4-O2
       - JP-UDP4-O2
       - JP-UDP4-O1
       - JP-UDP4-KHANWEB
