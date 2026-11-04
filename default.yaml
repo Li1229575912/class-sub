@@ -147,16 +147,6 @@ proxies:
     pinned-sha256: 3e873c3f7565633cd90ab9f835e6a5ca5043f1d88b80082c63a036e136d8a3b9
     obfs: salamander
     obfs-password: l1229575912
-  - name: "US-UDP4-FKIP美西10M"
-    type: hysteria2
-    server: 156.238.224.88
-    port: 41900
-    password: j9YGBHY6YQ
-    sni: aws.amazon.com
-    skip-cert-verify: true
-    pinned-sha256: e7d4dbea2dd50125e2dfac7c5d065ff568bbdc531bbf913c3cf10964c012db32
-    obfs: salamander
-    obfs-password: l1229575912
   - name: "US-UDP4-AWS美东"
     type: hysteria2
     server: 77.114.72.125
@@ -250,13 +240,6 @@ proxies:
     pinned-sha256: 76cfa8d8fe7863b8cdb740449d00bb263044577c02c7793192ab883249ec73ae
     obfs: salamander
     obfs-password: l1229575912
-  - name: "TW-UDP4-FK"
-    type: hysteria2
-    server: 202.160.76.247
-    port: 41998
-    password: "04fd039b-a576-4209-8bf8-04958fed4ec6"
-    skip-cert-verify: true
-    pinned-sha256: "8B08C401BC6BD818AF8019BA8292F5C2A092F4C2C8B768FDEB94840352C28450"
   - name: "US-TCP4-CC美西"
     type: vless
     server: cfcm.012889.xyz
@@ -270,17 +253,6 @@ proxies:
       path: /qwer
       headers:
         Host: v2.lightbook.cn
-  - name: "TW-TCP4-FK"
-    type: vless
-    server: 202.160.76.247
-    port: 41997
-    uuid: "9ae16182-9aa7-49cb-a1fb-c7c85ea15e3b"
-    flow: xtls-rprx-vision
-    tls: true
-    servername: www.amazon.com
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: aFISYkknPca_ce1hjYD4WOE74S3sA16qndUm9tvXjAk
   - name: jp-cftun
     type: vless
     server: cfcm.012889.xyz
@@ -323,7 +295,6 @@ proxy-groups:
       - SG-TCP6-fuck传家宝
       - HK-UDP4-UQIDC
       - JP-UDP4-AWS
-      - JP-UDP4-KHANWEB
       - JP-UDP4-O2
       - JP-UDP4-O1
       - 日本节点
@@ -368,7 +339,6 @@ proxy-groups:
   - name: 美国节点
     type: url-test
     proxies:
-      - US-UDP4-FKIP美西10M
       - US-UDP4-AWS美东
       - US-UDP4-CC美西
     url: 'http://latency-test.skk.moe/endpoint'
@@ -378,8 +348,6 @@ proxy-groups:
   - name: 其他备用
     type: url-test
     proxies:
-      - TW-UDP4-FK
-      - TW-TCP4-FK
       - jp-cftun
       - jp-cftun-电信
       - US-TCP4-CC美西
@@ -392,6 +360,7 @@ proxy-groups:
     type: fallback
     proxies:
       - HK-UDP4-UQIDC
+      - SG-TCP6-fuck传家宝
       - JP-UDP4-KHANWEB
       - 香港节点
       - 日本节点
