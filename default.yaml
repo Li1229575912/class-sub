@@ -121,6 +121,12 @@ tun:
     - 'any:53'
   auto-redirect: false
 proxies:
+  - name: "SG-TCP6-fuck传家宝"
+    type: ss
+    server: 2407:d840:21:114:514::f9
+    port: 30001
+    cipher: 2022-blake3-aes-128-gcm
+    password: WNb0RZ+MXiahThT1ZZ5ozg==
   - name: "JP-UDP4-O2"
     type: hysteria2
     server: cdn-jp2.lightbook.cn
@@ -174,6 +180,16 @@ proxies:
   - name: "HK-UDP4-UQIDC"
     type: hysteria2
     server: cdn-hk1.lightbook.cn
+    port: 41998
+    password: j6208tuQkv
+    sni: www.bing.com
+    skip-cert-verify: true
+    pinned-sha256: 4e72db97566a147fd7aa462f81b6f352c8d58bacd84abe32f75ae84b051e999a
+    obfs: salamander
+    obfs-password: l1229575912
+  - name: "HK-UDP6-UQIDC"
+    type: hysteria2
+    server: 2400:c620:10:8000::30
     port: 41998
     password: j6208tuQkv
     sni: www.bing.com
@@ -303,6 +319,8 @@ proxy-groups:
   - name: 优选UDP优先代理
     type: fallback
     proxies:
+      - HK-UDP6-UQIDC
+      - SG-TCP6-fuck传家宝
       - HK-UDP4-UQIDC
       - JP-UDP4-AWS
       - JP-UDP4-KHANWEB
@@ -320,6 +338,7 @@ proxy-groups:
   - name: 香港节点
     type: url-test
     proxies:
+      - HK-UDP6-UQIDC
       - HK-UDP4-UQIDC
       - HK-TCP4-UQIDC
     url: 'http://latency-test.skk.moe/endpoint'
@@ -341,7 +360,7 @@ proxy-groups:
   - name: 新加坡节点
     type: url-test
     proxies:
-      - DIRECT
+      - SG-TCP6-fuck传家宝
     url: 'http://latency-test.skk.moe/endpoint'
     interval: 180
     tolerance: 25
